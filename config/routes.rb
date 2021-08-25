@@ -7,4 +7,8 @@ Rails.application.routes.draw do
     get 'admin' => "homes#top"
   end
 
+  namespace :admin do
+    resources :items, except: [:destroy]
+  end
+
 end

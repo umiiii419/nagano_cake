@@ -4,9 +4,14 @@ class Admin::ItemsController < ApplicationController
   end
 
   def new
+    @item = Item.new
   end
 
   def create
+    @item = Item.new(item_params)
+    @item.user_id = current_user.id
+    @item.save
+    redirect_to admin_item_path
   end
 
   def show
@@ -16,6 +21,11 @@ class Admin::ItemsController < ApplicationController
   end
 
   def update
+  end
+
+  private
+  def item_params
+    params.require(:item).permit(:image, :name, :introduction, :genre, :price, :is_active)
   end
 
 

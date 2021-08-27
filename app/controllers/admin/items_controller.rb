@@ -5,19 +5,21 @@ class Admin::ItemsController < ApplicationController
 
   def new
     @item = Item.new
+    @genre = Genre.all
   end
 
   def create
     @item = Item.new(item_params)
-    @item.user_id = current_user.id
     @item.save
-    redirect_to admin_item_path
+    redirect_to admin_item_path(@item.id)
   end
 
   def show
+    @item = Item.find(params[:id])
   end
 
   def edit
+    @item = Item.find(params[:id])
   end
 
   def update

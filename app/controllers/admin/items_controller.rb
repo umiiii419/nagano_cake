@@ -1,11 +1,11 @@
 class Admin::ItemsController < ApplicationController
 
   def index
+    @items = Item.page(params[:page]).reverse_order
   end
 
   def new
     @item = Item.new
-    @genre = Genre.all
   end
 
   def create

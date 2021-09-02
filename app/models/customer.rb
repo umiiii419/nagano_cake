@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   def name
-    [first_name, last_name].join(' ')
+    [last_name, first_name].join(' ')
   end
 
 end

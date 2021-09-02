@@ -1,0 +1,9 @@
+<h3>商品一覧</h3>
+
+<% @items.each do |item| %>
+
+  <%= attachment_image_tag @items, :image, :fill, 80, 80 %>
+  <%= @items.name %>
+  <%= @items.add_tax_price.to_s(:delimited) %>
+
+<% end %>

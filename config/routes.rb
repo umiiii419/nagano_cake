@@ -22,7 +22,7 @@ Rails.application.routes.draw do
     get "/customers/my_page", to: 'customers#show', as: :customer
     resource :customers, only: [:edit, :update]
     resources :items, only: [:index,:show]
+    resources :addresses, except: [:new, :show]
   end
 
 end
-

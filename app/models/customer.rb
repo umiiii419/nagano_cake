@@ -8,4 +8,6 @@ class Customer < ApplicationRecord
     [last_name, first_name].join(' ')
   end
 
+  has_many :addresses, dependent: :destroy
+
 end

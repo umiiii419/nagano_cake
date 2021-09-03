@@ -1,0 +1,20 @@
+<%= attachment_image_tag @item, :image, :fill, 150, 150 %>
+
+<table>
+  <tr>
+    <td><%= @item.name %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><%= @item.introduction %></td>
+    <td></td>
+  </tr>
+  <tr>
+    <td><%= @item.add_tax_price.to_s(:delimited) %></td>
+    <td>(税込)</td>
+  </tr>
+  <tr>
+    <td>個数選択</td>
+  </tr>
+</table>
+

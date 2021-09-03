@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     resource :customers, only: [:edit, :update]
     resources :items, only: [:index,:show]
     resources :addresses, except: [:new, :show]
+    resources :cart_items, except: [:new, :show, :edit]
+    delete "/cart_items/destroy_all", to: 'cart_items#destroy_all', as: :cart_items_all
   end
 
 end

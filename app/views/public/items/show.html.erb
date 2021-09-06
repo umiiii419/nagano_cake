@@ -4,17 +4,24 @@
   <tr>
     <td><%= @item.name %></td>
     <td></td>
+    <td></td>
   </tr>
   <tr>
     <td><%= @item.introduction %></td>
     <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td><%= @item.add_tax_price.to_s(:delimited) %></td>
-    <td>(税込)</td>
+    <td><%= @item.add_tax_price.to_s(:delimited) %>(税込)</td>
+    <td></td>
+    <td></td>
   </tr>
   <tr>
-    <td>個数選択</td>
+  <%= form_with model:@cart_item, url: cart_items_path, local:true do |f| %>
+    <td><%= f.select :amount, *[1..10] %>個数選択</td>
+    <td><%= f.hidden_field :id, :value => @item.id %></td>
+    <td><%= f.submit 'カートに入れる' %></td>
+  <% end %>
   </tr>
 </table>
 

@@ -1,5 +1,5 @@
 <h4>注文情報入力</h4>
-<%= form_with model:@order, url: orders_path, local:true do |f| %>
+<%= form_with model:@order, url: order_confirm_path, local:true do |f| %>
 
   <div>
     <p>支払方法</p>
@@ -30,16 +30,16 @@
 
     <table>
       <tr>
-        <th><%= f.label :postal_code, "郵便番号(ハイフンなし)" %></th>
+        <th><%= f.label :postal_code, "郵便番号(ハイフンなし)", placeholder:"0000000" %></th>
         <td><%= f.text_field :postal_code, autofocus: true %></td>
       </tr>
       <tr>
         <th><%= f.label :address, "住所" %></th>
-        <td><%= f.text_field :address, autofocus: true, :size=>"60" %></td>
+        <td><%= f.text_field :address, autofocus: true, placeholder:"東京都渋谷区代々木神園町0-0", :size=>"60" %></td>
       </tr>
       <tr>
         <th><%= f.label :name, "宛名" %></th>
-        <td><%= f.text_field :name, autofocus: true %></td>
+        <td><%= f.text_field :name, autofocus: true, placeholder:"令和道子" %></td>
       </tr>
     </table>
   </div>

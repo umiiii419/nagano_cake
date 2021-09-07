@@ -1,16 +1,6 @@
 class ApplicationController < ActionController::Base
   before_action :configure_permitted_parameters, if: :devise_controller?
 
-  helper_method :current_cart_item
-
-  def current_cart_item
-    if customer_customer
-      @customer = Customer.find(session[:customer_id])
-    else
-      @customer = Customer.create
-      session[:customer_id] = @custimer.id
-    end
-  end
 
   protected
   def configure_permitted_parameters

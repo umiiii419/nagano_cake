@@ -22,11 +22,11 @@ Rails.application.routes.draw do
     resource :customers, only: [:edit, :update]
     resources :items, only: [:index,:show]
     resources :addresses, except: [:new, :show]
-    resources :cart_items, except: [:new, :show, :edit]
     delete "/cart_items/destroy_all", to: 'cart_items#destroy_all', as: :cart_items_destroy_all
-    resources :orders, only: [:new, :create, :index, :show]
+    resources :cart_items, except: [:new, :show, :edit]
     post "/orders/confirm", to: 'orders#confirm', as: :order_confirm
     get "/orders/thanks", to: 'orders#thanks', as: :order_thanks
+    resources :orders, only: [:new, :create, :index, :show]
   end
 
 end

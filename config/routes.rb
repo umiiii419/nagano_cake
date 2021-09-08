@@ -7,26 +7,32 @@ Rails.application.routes.draw do
  root to: 'public/homes#top'
   get "/about" =>"public/homes#about"
 
-  namespace :admin do
-    resources :items, except: [:destroy]
-    resources :genres, except: [:new, :show, :destroy]
-    resources :customers, except: [:new, :create, :destroy]
+
+  scope module: :public do
+    resources :items, only: [:index,:show]
+
+    get "/customers/my_page", to: 'customers#show', as: :customer
+    resource :customers, only: [:edit, :update]
+
+    delete "/cart_items/destroy_all", to: 'cart_items#destroy_all', as: :cart_items_destroy_all
+    resources :cart_items, only: [:index, :update, :destroy, :create]
+
+    post "/orders/confirm", to: 'orders#confirm', as: :order_confirm
+    get "/orders/thanks", to: 'orders#thanks', as: :order_thanks
+    resources :orders, only: [:new, :create, :index, :show]
+
+    resources :addresses, only: [:index, :edit, :create, :update, :destroy]
   end
 
   scope module: :admin do
     get 'admin' => "homes#top"
   end
 
-  scope module: :public do
-    get "/customers/my_page", to: 'customers#show', as: :customer
-    resource :customers, only: [:edit, :update]
-    resources :items, only: [:index,:show]
-    resources :addresses, except: [:new, :show]
-    delete "/cart_items/destroy_all", to: 'cart_items#destroy_all', as: :cart_items_destroy_all
-    resources :cart_items, except: [:new, :show, :edit]
-    post "/orders/confirm", to: 'orders#confirm', as: :order_confirm
-    get "/orders/thanks", to: 'orders#thanks', as: :order_thanks
-    resources :orders, only: [:new, :create, :index, :show]
+  namespace :admin do
+    resources :items, only: [:index, :new, :create, :show, :edit, :update]
+    resources :genres, only: [:index, :create, :edit, :update]
+    resources :customers, only: [:index, :show, :edit, :update]
+    resources :order_details, only: [:update]
   end
 
 end

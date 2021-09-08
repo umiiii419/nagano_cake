@@ -92,7 +92,7 @@ ActiveRecord::Schema.define(version: 2021_09_06_004305) do
     t.integer "status"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "selected_address"
+    t.integer "select_address"
   end
 
 end

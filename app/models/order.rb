@@ -15,4 +15,8 @@ class Order < ApplicationRecord
     shipped: 4,
   }
 
+  def full_address
+    '〒' + self.postal_code + ' ' + self.address
+  end
+
 end

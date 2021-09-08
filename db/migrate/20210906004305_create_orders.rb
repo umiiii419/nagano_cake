@@ -12,7 +12,7 @@ class CreateOrders < ActiveRecord::Migration[5.2]
       t.datetime :created_at
       t.datetime :updated_at
 
-      t.integer :selected_address
+      t.integer :select_address
 
       t.timestamps
     end

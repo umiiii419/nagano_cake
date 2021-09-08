@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
     @address = Address.find(params[:order][:address_id])
     @order.postal_code = current_customer.postal_code
     @order.address = current_customer.address
-    @order.name = current_customer.name
+    @order.name = current_customer.first_name + current_customer.last_name
   end
 
   def thanks
@@ -33,7 +33,7 @@ class Public::OrdersController < ApplicationController
 
   private
   def order_params
-    params.require(:order).permit(:payment_method, :selected_address, :postal_code, :address, :name )
+    params.require(:order).permit(:payment_method, :select_address, :postal_code, :address, :name )
   end
 
 end

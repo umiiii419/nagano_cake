@@ -6,6 +6,6 @@
   <% end %>
     <%= item.name %></br>
     <%= item.with_tax_price.to_s(:delimited) %></br>
-
 <% end %>
+
 <%= paginate @items %>

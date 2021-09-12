@@ -96,7 +96,7 @@ ActiveRecord::Schema.define(version: 2021_09_08_014625) do
     t.string "postal_code"
     t.string "address"
     t.string "name"
-    t.integer "shipping_cost"
+    t.integer "shipping_cost", default: 800
     t.integer "total_payment"
     t.integer "payment_method"
     t.integer "status"

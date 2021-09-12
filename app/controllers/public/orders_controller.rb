@@ -60,10 +60,6 @@ class Public::OrdersController < ApplicationController
       :name,
       :shipping_cost,
       :total_payment,
-      :created_at,
-      order_details_attributes: [:id,
-                                 :item_id,
-                                 :order_id])
+      :created_at )
   end
 end
-

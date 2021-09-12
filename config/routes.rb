@@ -12,6 +12,8 @@ Rails.application.routes.draw do
     resources :items, only: [:index,:show]
 
     get "/customers/my_page", to: 'customers#show', as: :customer
+    get "/customers/unsubscribe", to: 'customers#unsubscribe', as: :customer_unsubscribe
+    patch "/customers/withdrawal", to: 'customers#withdrawal', as: :customer_withdrawal
     resource :customers, only: [:edit, :update]
 
     delete "/cart_items/destroy_all", to: 'cart_items#destroy_all', as: :cart_items_destroy_all
